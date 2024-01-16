@@ -1,8 +1,8 @@
 # Base R image
-FROM rocker/r-base
+FROM rocker/r2u
 
 # Install libcurl
-RUN apt-get update && apt-get install -y libcurl4-openssl-dev
+RUN apt-get update && apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev
 
 # Make a directory in the container
 RUN mkdir /home/c4r-automation
@@ -10,17 +10,20 @@ RUN mkdir /home/c4r-automation
 # Install Renv
 RUN R -e "install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org'))"
 
-# Copy Renv files
 WORKDIR /home/c4r-automation/
 
+# renv package dependencies
 COPY renv.lock renv.lock
 RUN mkdir -p renv
 COPY renv/activate.R renv/activate.R
 COPY renv/settings.json renv/settings.json
 
+# authentication files
 RUN mkdir -p .secrets
 COPY .secrets/gdrive-token.rds .secrets/gdrive-token.rds
 COPY .Rprofile  .Rprofile
+
+# scripts
 COPY setup.R setup.R
 COPY sync.R sync.R
 
