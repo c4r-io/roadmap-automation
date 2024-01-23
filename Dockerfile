@@ -1,5 +1,5 @@
 # Base R image
-FROM rocker/r2u
+FROM rocker/r2u:22.04
 
 # Install libcurl
 RUN apt-get update && apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev
@@ -32,4 +32,4 @@ RUN R -e "renv::restore()"
 
 # Run the R script
 CMD Rscript /home/c4r-automation/setup.R
-CMD Rscript /home/c4r-automation/sync.R
+# CMD Rscript /home/c4r-automation/sync.R

@@ -227,14 +227,14 @@
     },
     "gdrive.automation": {
       "Package": "gdrive.automation",
-      "Version": "0.9.2",
+      "Version": "0.9.3",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "gdrive-automation",
       "RemoteUsername": "c4r-io",
       "RemoteRef": "HEAD",
-      "RemoteSha": "d5d42fdacaecc5c96f16660554f190c37a74c33f",
+      "RemoteSha": "0ad6f623b9ac5d0ed0ff06a0aebb689be7d16e33",
       "Requirements": [
         "R",
         "dplyr",
@@ -249,7 +249,7 @@
         "stringr",
         "testthat"
       ],
-      "Hash": "9133d482aa77a8b0ef6420eae375a4ce"
+      "Hash": "4bc7357b8132f0920c0b5729508eee81"
     },
     "generics": {
       "Package": "generics",
@@ -468,7 +468,7 @@
     },
     "pkgload": {
       "Package": "pkgload",
-      "Version": "1.3.3",
+      "Version": "1.3.4",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
@@ -485,7 +485,7 @@
         "utils",
         "withr"
       ],
-      "Hash": "903d68319ae9923fb2e2ee7fa8230b91"
+      "Hash": "876c618df5ae610be84356d5d7a5d124"
     },
     "praise": {
       "Package": "praise",
@@ -509,14 +509,14 @@
     },
     "ps": {
       "Package": "ps",
-      "Version": "1.7.5",
+      "Version": "1.7.6",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
         "R",
         "utils"
       ],
-      "Hash": "709d852d33178db54b17c722e5b1e594"
+      "Hash": "dd2b9319ee0656c8acf45c7f40c59de7"
     },
     "purrr": {
       "Package": "purrr",
@@ -570,6 +570,20 @@
         "tibble"
       ],
       "Hash": "76c9e04c712a05848ae7a23d2f170a40"
+    },
+    "remotes": {
+      "Package": "remotes",
+      "Version": "2.4.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "methods",
+        "stats",
+        "tools",
+        "utils"
+      ],
+      "Hash": "63d15047eb239f95160112bcadc4fcb9"
     },
     "renv": {
       "Package": "renv",
@@ -780,16 +794,15 @@
     },
     "withr": {
       "Package": "withr",
-      "Version": "2.5.2",
+      "Version": "3.0.0",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
         "R",
         "grDevices",
-        "graphics",
-        "stats"
+        "graphics"
       ],
-      "Hash": "4b25e70111b7d644322e9513f403a272"
+      "Hash": "d31b6c62c10dcf11ec530ca6b0dd5d35"
     },
     "xml2": {
       "Package": "xml2",

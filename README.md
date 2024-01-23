@@ -21,6 +21,10 @@ docker build --platform=linux/amd64 -t roadmap-automation .
 
 To run
 ```
-docker run roadmap-automation 
+docker run --net=host --platform=linux/amd64 -v ./.Renviron:/home/c4r-automation/.Renviron roadmap-automation:latest
 ```
 
+To run (with interactive shell for debugging)
+```
+docker run -it --net=host --platform=linux/amd64 -v ./.Renviron:/home/c4r-automation/.Renviron roadmap-automation:latest bash
+```
