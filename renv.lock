@@ -39,6 +39,11 @@
       ],
       "Hash": "68bd2b066e1fe780bbf62fc8bcc36de3"
     },
+    "bspm": {
+      "Package": "bspm",
+      "Version": "0.5.5",
+      "Source": "Repository"
+    },
     "callr": {
       "Package": "callr",
       "Version": "3.7.3",
