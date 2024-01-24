@@ -67,7 +67,7 @@ update_data <- function(path = tempdir())
     # update data file
     data_file <- "unit_data.RDS"
     data_path <- file.path(repo_path, data_file)
-    download_data(data_path)
+    download_unit_data(data_path)
 
     # add, commit, push new data file
     git_add(files = data_file, repo = repo)
