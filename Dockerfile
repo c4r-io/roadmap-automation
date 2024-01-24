@@ -12,14 +12,6 @@ RUN R -e "install.packages('renv', repos = c(CRAN = 'https://cloud.r-project.org
 
 WORKDIR /home/c4r-automation/
 
-# authentication files
-RUN mkdir -p .secrets
-COPY .secrets/gdrive-token.rds .secrets/gdrive-token.rds
-
-# scripts
-COPY setup.R setup.R
-COPY sync.R sync.R
-
 # renv package dependencies
 COPY renv.lock renv.lock
 RUN mkdir -p renv
@@ -30,6 +22,15 @@ COPY renv/settings.json renv/settings.json
 # Restore the R environment
 RUN R -e "renv::restore()"
 
+# authentication files
+RUN mkdir -p .secrets
+COPY .secrets/gdrive-token.rds .secrets/gdrive-token.rds
+COPY .secrets/github-PAT.rds .secrets/github-PAT.rds
+
+# scripts
+COPY setup.R setup.R
+COPY sync.R sync.R
+
 # Run the R script
 CMD Rscript /home/c4r-automation/setup.R
-# CMD Rscript /home/c4r-automation/sync.R
+CMD Rscript /home/c4r-automation/sync.R
