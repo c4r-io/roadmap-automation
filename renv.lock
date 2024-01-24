@@ -246,14 +246,14 @@
     },
     "gdrive.automation": {
       "Package": "gdrive.automation",
-      "Version": "0.9.3",
+      "Version": "0.9.4",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "gdrive-automation",
       "RemoteUsername": "c4r-io",
       "RemoteRef": "HEAD",
-      "RemoteSha": "0ad6f623b9ac5d0ed0ff06a0aebb689be7d16e33",
+      "RemoteSha": "eeb33161e46256e22388a2b5115c5ae758963eed",
       "Requirements": [
         "R",
         "dplyr",
@@ -266,9 +266,10 @@
         "officer",
         "rlang",
         "stringr",
-        "testthat"
+        "testthat",
+        "utils"
       ],
-      "Hash": "4bc7357b8132f0920c0b5729508eee81"
+      "Hash": "b736c6451c9e5a8f434e57fa80ca632a"
     },
     "generics": {
       "Package": "generics",
