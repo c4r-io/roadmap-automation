@@ -47,7 +47,7 @@ set_github_pat <- function(token_file = ".secrets/github-PAT.rds",
                                          key = decrypt_env_var)
     }
 
-    Sys.setenv(GITHUB_PAT = GITHUB_PAT)
+    Sys.setenv(GITHUB_PAT = token)
     invisible(token)
 }
 
