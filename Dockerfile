@@ -32,5 +32,4 @@ COPY setup.R setup.R
 COPY sync.R sync.R
 
 # Run the R script
-CMD Rscript /home/c4r-automation/setup.R
-CMD Rscript /home/c4r-automation/sync.R
+CMD Rscript /home/c4r-automation/setup.R && Rscript /home/c4r-automation/sync.R
