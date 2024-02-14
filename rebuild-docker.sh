@@ -21,6 +21,9 @@ done
 
 # update and rebuild
 if $has_updates ; then
+    echo "updates found!"
     git pull
     /usr/bin/podman -t roadmap-automation .
+else
+    echo "no updates found; skipping rebuild"
 fi
