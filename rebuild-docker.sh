@@ -25,5 +25,6 @@ if $has_updates ; then
     git pull
     /usr/bin/podman build -t roadmap-automation .
 else
+    git reset --hard "$origin/$branch"
     echo "no updates found; skipping rebuild"
 fi
