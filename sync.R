@@ -32,11 +32,12 @@ process_roadmaps <- function()
     log_action("Ending Processing Loop")
 }
 
-set_github_pat <- function(token_file = ".secrets/github-PAT.rds",
+set_github_pat <- function(force_new = FALSE,
+                           token_file = ".secrets/github-PAT.rds",
                            decrypt_env_var = "GH_PAT_KEY")
 {
     token <- Sys.getenv("GITHUB_PAT")
-    if (token != "")
+    if (token != "" && !force_new)
     {
         return(invisible(token))
     }
@@ -57,7 +58,7 @@ update_data <- function(path = tempdir())
     # set up git config
     git_config_global_set("user.name", "Raven Bot")
     git_config_global_set("user.email", "raven_bot@c4r.io")
-    set_github_pat()
+    set_github_pat(force_new = TRUE)
 
     # clone dashboard repo
     repo_path <- file.path(path, "unit-dashboard")
