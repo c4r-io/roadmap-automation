@@ -37,7 +37,18 @@ update_data <- function(path = tempdir())
     # update data file
     data_file <- "unit_data.RDS"
     data_path <- file.path(repo_path, data_file)
-    download_unit_data(data_path)
+    result <- download_unit_data(data_path)
+
+    # sync unit names to projections spreadsheet
+    projections_spreadsheet <- "https://docs.google.com/spreadsheets/d/1oSe2HgRCSevMiko1Vzky-w9tBj6ry229-aLiARi9dSI/edit?usp=sharing"
+    unit_data <- result$unit_data
+
+    projections_data <- googlesheets4::read_sheet(projections_spreadsheet)
+    target_unit_names <- unit_data[match(xx$`unit-id`, unit_data$`unit-id`), "Unit"]
+    if (!identical(projections_data$Unit, target_unit_names[[1]]))
+    {
+        googlesheets4::range_write(projections_spreadsheet, target_unit_names, range = "D1", reformat = FALSE)
+    }
 
     # add, commit, push new data file
     git_add(files = data_file, repo = repo)
