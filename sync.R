@@ -44,7 +44,7 @@ update_data <- function(path = tempdir())
     unit_data <- result$unit_data
 
     projections_data <- googlesheets4::read_sheet(projections_spreadsheet)
-    target_unit_names <- unit_data[match(xx$`unit-id`, unit_data$`unit-id`), "Unit"]
+    target_unit_names <- unit_data[match(projections_spreadsheet$`unit-id`, unit_data$`unit-id`), "Unit"]
     if (!identical(projections_data$Unit, target_unit_names[[1]]))
     {
         googlesheets4::range_write(projections_spreadsheet, target_unit_names, range = "D1", reformat = FALSE)
