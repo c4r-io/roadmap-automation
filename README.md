@@ -1,18 +1,43 @@
 # roadmap-automation
 
-<!-- badges: start -->
-
-<!-- badges: end -->
-
-This repo 
+This repo contains the files for deploying automation of C4R synchronization scripts to the Kording Lab server, via a docker image.
 
 ## Files
 
+### Bash Scripts
+`run-sync.sh` - run the docker image (simplifies the command for cron and on-demand running)
+`rebuild-docker.sh` - check for updates to the `main` branch of the git repo:
+  if found, get updates and rebuild the docker image
+  if not, reset the repo (in case there is cruft in the local folder for some reason)
+
+### Docker Files
+`Dockerfile` - the spec for the docker image
+
+### R Files
 `setup.R` - install the latest version of the `{{gdrive-automation}}` package from GitHub
 `sync.R` - run through the synchronization loop
-`.Renviron` - file with API keys (should NOT be present in the git repo or the docker image and will be distributed by Hao when the docker image is to be run)
 
-## Instructions
+### Authentication
+`.secrets/gdrive-token.rds` - token for API access to Google Drive files (from personal app to avoid shared limits for all users of the `{googledrive}` package)
+`.secrets/github-PAT.rds` - token for updating the Github Repo for the dashboard
+`.Renviron` - file with decryption keys for the above (encrypted) tokens, also includes monday.com API key (this file should be ABSENT from the git repo and docker image, and is distributed for deployment, and mounted during the run by `run-sync.sh`
+
+## Cron
+
+These are the cron schedules for deployment:
+```
+0 12-23/1 * * * /usr/bin/bash /home/haoye/projects/roadmap-automation/run-sync.sh
+0 3 * * * /usr/bin/bash /home/haoye/projects/roadmap-automation/rebuild-docker.sh
+```
+
+`0 12-23/1 * * *` runs every hour between 1200 and 2300 (as the server is on UTC time, this is either 0800-1900 ET or 0700-1800 ET, depending on whether daylight savings is in effect)
+
+`0 3 * * *` runs at 0300 every day (either 2300 ET or 2200 ET, depending on whether daylight savings is in effect)
+
+The first command runs the synchronization script.
+The second command runs the script to check for and rebuild the docker image.
+
+## Local Building and Testing)
 
 To build 
 ```
@@ -28,3 +53,4 @@ To run (with interactive shell for debugging)
 ```
 docker run -it --net=host --platform=linux/amd64 -v ./.Renviron:/home/c4r-automation/.Renviron roadmap-automation:latest bash
 ```
+
