@@ -1,6 +1,15 @@
 # roadmap-automation
 
-This repo contains the files for deploying automation of C4R synchronization scripts to the Kording Lab server, via a docker image.
+This repo contains the files for automation of C4R synchronization scripts.
+
+## Overview
+
+This repo and associated docker image are deployed to the Kording Lab server.
+
+Primary Actions:
+
+* every day, a bash script is run to check for updates to this repo on Github, if found, the Docker image is rebuilt
+* hourly, during North America work hours, the Docker iamge is run, which does the synchronization and updating of content related to C4R materials. The bulk of this code is in https://github.com/c4r-io/gdrive-automation 
 
 ## Files
 
