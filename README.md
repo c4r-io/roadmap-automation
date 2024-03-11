@@ -63,3 +63,12 @@ To run (with interactive shell for debugging)
 docker run -it --net=host --platform=linux/amd64 -v ./.Renviron:/home/c4r-automation/.Renviron roadmap-automation:latest bash
 ```
 
+## Past Troubleshooting
+
+Some major challenges:
+1. authentication to APIs - I needed both non-interactive authentication (https://gargle.r-lib.org/articles/non-interactive-auth.html) as well as my own API credentials (https://gargle.r-lib.org/articles/get-api-credentials.html) to get around API rate limits
+
+2. debugging various errors and wanting to automate updating the Docker image (is why this repo now has more complex shell scripts to handle the routine commands)
+
+3. using the latest version of `{{gdrive-automation}}` - included as its own setup line in the `setup.R`, so that it is run every time the Docker image is run, and updating the Github Actions script of the Dashboard to use `{{ secrets.GITHUB_TOKEN }}` in order to deal with Github - Github rate limits.
+
